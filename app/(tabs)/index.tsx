@@ -1,23 +1,43 @@
+import React from 'react';
+import { Button, StyleSheet, View } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
 
-import { Button } from 'react-native';
-import Animated, { useSharedValue } from 'react-native-reanimated';
-import { SafeAreaView } from 'react-native-safe-area-context';
+export default function App() {
+  const translateX = useSharedValue<number>(0);
 
-export default function HomeScreen() {
-  const width= useSharedValue(200)
-  const handlePress=()=>{
-    width.value= width.value+50;
-  }
+  const handlePress = () => {
+    translateX.value += 50;
+  };
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: withSpring(translateX.value * 2) }],
+  }));
+
   return (
-    <SafeAreaView>
-    <Animated.View
-      style={{
-        width,
-        height: 100,
-        backgroundColor: 'red',
-      }}
-    />
-    <Button title='animate' onPress={handlePress}/>
-    </SafeAreaView>
+    <>
+      <Animated.View style={[styles.box, animatedStyles]} />
+      <View style={styles.container}>
+        <Button onPress={handlePress} title="Click me" />
+      </View>
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  box: {
+    height: 120,
+    width: 120,
+    backgroundColor: '#b58df1',
+    borderRadius: 20,
+    marginVertical: 50,
+  },
+});
