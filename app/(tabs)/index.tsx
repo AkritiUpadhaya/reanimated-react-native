@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import Animated, {
-  useAnimatedStyle,
+  useAnimatedProps,
   useSharedValue,
-  withSpring,
+  withTiming
 } from 'react-native-reanimated';
 
 export default function App() {
@@ -13,13 +13,17 @@ export default function App() {
     translateX.value += 50;
   };
 
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: withSpring(translateX.value * 2) }],
-  }));
+  const animatedProps=useAnimatedProps(()=>({
+    translateX:withTiming(translateX.value)
+  }))
+
+  // const animatedStyles = useAnimatedStyle(() => ({
+  //   transform: [{ translateX: withSpring(translateX.value * 2) }],
+  // }));
 
   return (
     <>
-      <Animated.View style={[styles.box, animatedStyles]} />
+      <Animated.View animatedProps={animatedProps} style={[styles.box]} />
       <View style={styles.container}>
         <Button onPress={handlePress} title="Click me" />
       </View>
