@@ -6,10 +6,17 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 export default function TabTwoScreen() {
 
   const pressed= useSharedValue(false)
+  const offset= useSharedValue(0)
 
-  const tap= Gesture.Tap()
+  const pan= Gesture.Pan()
   .onBegin(()=>pressed.value=true)
-  .onFinalize(()=>pressed.value=false)
+  .onChange((event)=>{
+    offset.value=event.translationY
+  })
+  .onFinalize(()=>{
+    offset.value=withTiming(0)
+    pressed.value=false
+  })
 
   // const offset = useSharedValue(0);
 
@@ -29,11 +36,13 @@ export default function TabTwoScreen() {
 
   const animatedStyle= useAnimatedStyle(()=>({
    backgroundColor:pressed.value?'red':'blue',
-   transform:[{scale:withTiming(pressed.value?1.2:1)}]
+   transform:[
+    {translateY:offset.value},
+    {scale:withTiming(pressed.value?1.2:1)}]
   }))
   return (
    <View style={styles.container}>
-    <GestureDetector gesture={tap}>
+    <GestureDetector gesture={pan}>
     <Animated.View style={[styles.box,animatedStyle]}>
     </Animated.View>
     </GestureDetector>
