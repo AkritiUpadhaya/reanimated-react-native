@@ -1,32 +1,45 @@
-import { Button, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
-import Animated, { useAnimatedStyle, useSharedValue, withRepeat, withSequence, withTiming, } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 export default function TabTwoScreen() {
 
-  const offset = useSharedValue(0);
+  const pressed= useSharedValue(false)
 
-  const OFFSET = 40;
-  const TIME = 1000;
+  const tap= Gesture.Tap()
+  .onBegin(()=>pressed.value=true)
+  .onFinalize(()=>pressed.value=false)
 
-  const handlePress=()=>{
-    offset.value= withSequence(
-      withTiming(-OFFSET,{duration:TIME}),
-      withRepeat(withTiming(OFFSET,{duration:TIME}),5, true),
-      withTiming(0, { duration: TIME })
-    )
-  }
+  // const offset = useSharedValue(0);
+
+  // const OFFSET = 40;
+  // const TIME = 1000;
+  // const DELAY = 2000;
+
+  // const handlePress=()=>{
+
+  //   offset.value=withDelay(DELAY,
+  //   withSequence(
+  //     withTiming(-OFFSET,{duration:TIME}),
+  //     withRepeat(withTiming(OFFSET,{duration:TIME}),5, true),
+  //     withTiming(0, { duration: TIME })
+  //   ))
+  // }
 
   const animatedStyle= useAnimatedStyle(()=>({
-    transform:[{translateX:offset.value}]
-  }
-  ))
+   backgroundColor:pressed.value?'red':'blue',
+   transform:[{scale:withTiming(pressed.value?1.2:1)}]
+  }))
   return (
    <View style={styles.container}>
+    <GestureDetector gesture={tap}>
     <Animated.View style={[styles.box,animatedStyle]}>
     </Animated.View>
+    </GestureDetector>
+    
 
-    <Button title='click' onPress={handlePress}/>
+    {/* <Button title='click' onPress={handlePress}/> */}
    </View>
   );
 }
