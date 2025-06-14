@@ -1,4 +1,4 @@
-import Methods from '@/components/Methods';
+import Hooks from '@/components/Hooks';
 import React from 'react';
 
 
@@ -37,8 +37,11 @@ export default function App() {
 //   }, []);
 
   return (
+<>
+    {/* <Methods/> */}
+    <Hooks/>
+    </>
 
-    <Methods/>
    
 //     <View style={styles.container}>
 //       <Animated.View style={[styles.box, animatedDefault]}>
