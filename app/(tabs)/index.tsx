@@ -1,4 +1,4 @@
-import Hooks from '@/components/Hooks';
+import ScrollHandler from '@/components/ScrollHandler';
 import React from 'react';
 
 
@@ -39,7 +39,8 @@ export default function App() {
   return (
 <>
     {/* <Methods/> */}
-    <Hooks/>
+    {/* <Hooks/> */}
+    <ScrollHandler/>
     </>
 
    
