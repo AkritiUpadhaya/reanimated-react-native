@@ -16,7 +16,7 @@ const ScrollHandler = () => {
 
             opacity.value= interpolate(
                 offsetY,
-                [0, HEADER_HEIGHT/2],
+                [0, HEADER_HEIGHT/2.5],
                 [1,0],
                 'clamp'
             )

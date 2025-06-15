@@ -1,4 +1,4 @@
-import ScrollHandler from '@/components/ScrollHandler';
+import ScrollTo from '@/components/ScrollTo';
 import React from 'react';
 
 
@@ -40,7 +40,8 @@ export default function App() {
 <>
     {/* <Methods/> */}
     {/* <Hooks/> */}
-    <ScrollHandler/>
+    {/* <ScrollHandler/> */}
+    <ScrollTo/>
     </>
 
    
