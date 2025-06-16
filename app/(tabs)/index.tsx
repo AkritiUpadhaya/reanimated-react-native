@@ -1,4 +1,4 @@
-import ScrollTo from '@/components/ScrollTo';
+import KeyboardHandler from '@/components/KeyboardHandler';
 import React from 'react';
 
 
@@ -41,7 +41,8 @@ export default function App() {
     {/* <Methods/> */}
     {/* <Hooks/> */}
     {/* <ScrollHandler/> */}
-    <ScrollTo/>
+    {/* <ScrollTo/> */}
+    <KeyboardHandler/>
     </>
 
    
