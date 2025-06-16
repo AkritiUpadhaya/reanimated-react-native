@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedRef, useDerivedValue, useScrollViewOffset } from 'react-native-reanimated';
 
 const ScrollTo = () => {
@@ -10,10 +10,15 @@ const ScrollTo = () => {
     const [isHorizontal, setIsHorizontal]= React.useState(false)
   return (
     <View style={styles.container}>
-        <Animated.ScrollView>
-            Hello
+        <Animated.ScrollView ref={animatedRef} horizontal={isHorizontal} style={styles.scroll} contentContainerStyle={styles.scrollContent}>
+            {Array.from({length:10}).map((_,i)=>(
+                <View key={i} style={styles.box}>
+                    <Text style={styles.center}>{text.value}</Text>
+                </View>
+            ))}
+            <Button title={`Toggle scroll to ${isHorizontal?'vertical':'horizontal'}`} onPress={()=>setIsHorizontal(!isHorizontal)}/>
         </Animated.ScrollView>
-      <Text>ScrollTo</Text>
+      
     </View>
   )
 }
