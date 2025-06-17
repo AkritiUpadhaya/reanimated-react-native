@@ -1,4 +1,4 @@
-import LayoutTransition from '@/components/LayoutTransition';
+import Worklet from '@/components/Worklet';
 import React from 'react';
 
 
@@ -43,7 +43,8 @@ export default function App() {
     {/* <ScrollHandler/> */}
     {/* <ScrollTo/> */}
     {/* <KeyboardHandler/> */}
-    <LayoutTransition/>
+    {/* <LayoutTransition/> */}
+    <Worklet/>
     </>
 
    
