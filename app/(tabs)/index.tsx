@@ -1,4 +1,4 @@
-import KeyboardHandler from '@/components/KeyboardHandler';
+import LayoutTransition from '@/components/LayoutTransition';
 import React from 'react';
 
 
@@ -42,7 +42,8 @@ export default function App() {
     {/* <Hooks/> */}
     {/* <ScrollHandler/> */}
     {/* <ScrollTo/> */}
-    <KeyboardHandler/>
+    {/* <KeyboardHandler/> */}
+    <LayoutTransition/>
     </>
 
    
