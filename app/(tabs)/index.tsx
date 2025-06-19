@@ -1,4 +1,4 @@
-import Worklet from '@/components/Worklet';
+import GestureHandling from '@/components/GestureHandling';
 import React from 'react';
 
 
@@ -44,7 +44,8 @@ export default function App() {
     {/* <ScrollTo/> */}
     {/* <KeyboardHandler/> */}
     {/* <LayoutTransition/> */}
-    <Worklet/>
+    {/* <Worklet/> */}
+    <GestureHandling/>
     </>
 
    
