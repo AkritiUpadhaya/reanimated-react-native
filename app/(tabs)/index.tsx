@@ -1,4 +1,4 @@
-import GestureHandling from '@/components/GestureHandling';
+import SkiaBasics from '@/components/SkiaBasics';
 import React from 'react';
 
 
@@ -45,7 +45,8 @@ export default function App() {
     {/* <KeyboardHandler/> */}
     {/* <LayoutTransition/> */}
     {/* <Worklet/> */}
-    <GestureHandling/>
+    {/* <GestureHandling/> */}
+    <SkiaBasics/>
     </>
 
    
